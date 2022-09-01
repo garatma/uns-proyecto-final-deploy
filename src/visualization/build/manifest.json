@@ -1,0 +1,15 @@
+{
+    "short_name": "Visualización de espacios y eventos",
+    "name": "Visualización de espacios y eventos, creada con reactjs",
+    "icons": [
+        {
+            "src": "logo.png",
+            "type": "image/png",
+            "sizes": "432x463"
+        }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}

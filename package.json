@@ -1,0 +1,13 @@
+{
+  "name": "proyecto-final",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=16.x"
+  },
+  "scripts": {
+    "start": "cd src/backend && npm start",
+    "install": "cd src/backend && npm install",
+    "build": "cd src/backend && npm run build"
+  }
+}

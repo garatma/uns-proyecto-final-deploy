@@ -22,3 +22,6 @@ init.sql
 # Keep the build directories in admin and visualization
 !src/admin/build
 !src/visualization/build
+
+# swagger
+swagger-output.json

@@ -5,16 +5,22 @@ node_modules/
 .vscode
 
 # Keep the build directories in admin and visualization
-!src/admin/build
-!src/visualization/build
+# !src/admin/build
+# !src/visualization/build
+# src/admin
+# src/visualization
 
 # Files and directories in the main repository that we don't need
 .editorconfig
 .eslintrc.json
 .prettierrc
-src/admin
-src/visualization
+# src/admin
+# src/visualization
 .github
 doc
 README.md
 init.sql
+
+# Keep the build directories in admin and visualization
+# !src/admin/build
+# !src/visualization/build

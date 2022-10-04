@@ -1,0 +1,291 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.1.0",
+    "title": "Proyecto Final Backend API",
+    "description": ""
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Events and rooms",
+      "description": "Every service related with events and rooms."
+    },
+    {
+      "name": "Announcements",
+      "description": "Every service related with announcements."
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/backend/room-event": {
+      "get": {
+        "tags": [
+          "Events and rooms"
+        ],
+        "summary": "Get the events that are taking place at the specified timestamp and hour range",
+        "description": "",
+        "parameters": [
+          {
+            "name": "timestamp",
+            "in": "query",
+            "description": "Timestamp where the events take place.",
+            "required": false,
+            "type": "Integer"
+          },
+          {
+            "name": "range",
+            "in": "query",
+            "description": "Hour range around the timestamp where the events take place.",
+            "required": false,
+            "type": "Integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/backend/announcement": {
+      "get": {
+        "tags": [
+          "Announcements"
+        ],
+        "summary": "Get the all of the announcements",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Announcements"
+        ],
+        "summary": "Create an announcement",
+        "description": "",
+        "parameters": [
+          {
+            "name": "announcement",
+            "in": "body",
+            "description": "The data for the new announcement. Every variable shown in the example is required.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "My first announcement!"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "This is the best announcement I wrote yet!"
+                },
+                "writer": {
+                  "type": "string",
+                  "example": "Me"
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "NORMAL (or EMERGENCY)"
+                },
+                "photo": {
+                  "type": "string",
+                  "example": "data:image/png;base64,iVB ... (photo in Base 64)"
+                },
+                "timestamp_begin": {
+                  "type": "number",
+                  "example": 1657572360
+                },
+                "timestamp_end": {
+                  "type": "number",
+                  "example": 1669388400
+                },
+                "timestamp_create": {
+                  "type": "number",
+                  "example": 1658189878
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Announcements"
+        ],
+        "summary": "Update an announcement",
+        "description": "",
+        "parameters": [
+          {
+            "name": "announcement",
+            "in": "body",
+            "description": "The new data for the announcement, as-is (nulls will replace previous non-null values of the announcement). Every variable shown in the example is required.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 39
+                },
+                "title": {
+                  "type": "string",
+                  "example": "My first announcement!"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "This is an update for my first announcement"
+                },
+                "writer": {
+                  "type": "string",
+                  "example": "Me, again"
+                },
+                "priority": {
+                  "type": "string",
+                  "example": "NORMAL (or EMERGENCY)"
+                },
+                "photo": {
+                  "type": "string",
+                  "example": "data:image/png;base64,iVB ... (photo in Base 64)"
+                },
+                "timestamp_begin": {
+                  "type": "number",
+                  "example": 1657572360
+                },
+                "timestamp_end": {
+                  "type": "number",
+                  "example": 1669388400
+                },
+                "timestamp_update": {
+                  "type": "number",
+                  "example": 1658199878
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/backend/announcement/id/{id}": {
+      "get": {
+        "tags": [
+          "Announcements"
+        ],
+        "summary": "Get a specific announcement, by the its ID in the database",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "Integer",
+            "description": "Announcement's ID in the database."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/backend/announcement/timestamp/{timestamp}": {
+      "get": {
+        "tags": [
+          "Announcements"
+        ],
+        "summary": "Get a specific announcement, that is active in the specified timestamp",
+        "description": "",
+        "parameters": [
+          {
+            "name": "timestamp",
+            "in": "path",
+            "required": true,
+            "type": "Integer",
+            "description": "Timestamp to filter active announcements at that date and time."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/backend/announcement/": {
+      "delete": {
+        "tags": [
+          "Announcements"
+        ],
+        "summary": "Delete announcements",
+        "description": "",
+        "parameters": [
+          {
+            "name": "announcements",
+            "in": "body",
+            "description": "An array or list of the database IDs of the announcements to delete.",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "example": [
+                20,
+                71,
+                15
+              ],
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

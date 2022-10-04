@@ -106,13 +106,17 @@ dist
 # VSCode files
 .vscode
 
+# Keep the build directories in admin and visualization
+!src/admin/build
+!src/visualization/build
+
 # Files and directories in the main repository that we don't need
 .editorconfig
 .eslintrc.json
 .prettierrc
 src/admin
 src/visualization
-
-# Keep the build directories in admin and visualization
-!src/admin/build
-!src/visualization/build
+.github
+doc
+README.md
+init.sql

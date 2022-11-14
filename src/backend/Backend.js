@@ -119,7 +119,7 @@ backend.get("/backend/room-event", (req, res) => {
 backend.get("/backend/announcement", (req, res) => {
     // #swagger.tags = ['Announcements']
 
-    // #swagger.summary = 'Get the all of the announcements'
+    // #swagger.summary = 'Get all of the announcements'
 
     console.log("GET to " + req.url);
 
@@ -132,7 +132,7 @@ backend.get("/backend/announcement", (req, res) => {
 backend.get("/backend/announcement/id/:id", (req, res) => {
     // #swagger.tags = ['Announcements']
 
-    // #swagger.summary = 'Get a specific announcement, by the its ID in the database'
+    // #swagger.summary = 'Get a specific announcement, by its ID in the database'
 
     /* #swagger.parameters['id'] = {
         in: 'path',
